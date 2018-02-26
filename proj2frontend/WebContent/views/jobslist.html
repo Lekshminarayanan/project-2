@@ -1,0 +1,15 @@
+<div class="container">
+	<div ng-repeat="job in jobs">
+		<!-- List<Job> response.data -->
+		<div class="panel panel-info">
+			<div clss="panel-heading">
+				<a href="#/getjob/{{job.id}}">{{job.jobTitle}}</a>
+			</div>
+
+			<div class="panel-body">
+				<b>Posted On</b>{{job.postedOn date:'medium'}}<br>
+				<b>Skills Required</b>{{job.skillsRequired}}
+			</div>
+		</div>
+	</div>
+</div>
