@@ -3,7 +3,7 @@
  */
 app.factory('UserService',function($http){
 	var userService={}
-	
+	alert("inside the register user js");
 	userService.registerUser=function(user){
 		console.log('in userservice')
 		console.log(user)

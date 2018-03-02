@@ -28,6 +28,10 @@ app.config(function($routeProvider){
 		templateUrl:'views/jobdetail.html',
 			controller:'JobCtrl'
 	})
+	.when('/addblog',{
+		templateUrl:'views/blogform.html',
+			controller:'BlogCtrl'
+	})
 	.otherwise({
 		templateUrl:'views/home.html'
 	})
@@ -36,6 +40,7 @@ app.config(function($routeProvider){
 		$rootScope.loggedInUser==$cookiesStore.get('currentuser')
 		
 		$rootScope.logout=function(){
+		console.log('entering logout')
 		UserService.logout().then(
 				function(response){
 			delete $rootScope.loggedInUser;
