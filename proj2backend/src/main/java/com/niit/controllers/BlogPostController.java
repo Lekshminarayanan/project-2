@@ -3,6 +3,7 @@ package com.niit.controllers;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Id;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +45,7 @@ public ResponseEntity<?> addBlogPost(@RequestBody BlogPost blogPost,HttpSession 
 		ErrorClazz error=new ErrorClazz(6,"Unable to post blog..."+ e.getMessage());
 		return new ResponseEntity<ErrorClazz>(error,HttpStatus.INTERNAL_SERVER_ERROR);
 	}}
-
+@RequestMapping(value="/getblogs/{approved}",method=RequestMethod.GET)
 public ResponseEntity<?> getAllBlogs(@PathVariable int approved,HttpSession session){
 	if(email==null) {
 		ErrorClazz error=new ErrorClazz(5,"Unauthorized access...");
@@ -60,5 +61,45 @@ public ResponseEntity<?> getAllBlogs(@PathVariable int approved,HttpSession sess
 	}
 	List<BlogPost> blogs=blogPostDao.listOfBlogs(approved);
 	return new ResponseEntity<List<BlogPost>>(blogs,HttpStatus.OK);
+}
+@RequestMapping(value="/getblog/{id}",method=RequestMethod.GET)
+public ResponseEntity<?> getBlog(@PathVariable int approved,HttpSession session){
+	String email=(String)session.getAttribute("loginId");
+	if(email==null) {
+		ErrorClazz error=new ErrorClazz(5,"Unauthorized access...");
+		return new ResponseEntity<ErrorClazz>(error,HttpStatus.UNAUTHORIZED);
+	}
+	BlogPost blogPost=blogPostDao.getBlog(id);
+	return new ResponseEntity<BlogPost>(blogPost,HttpStatus.OK);
+}
+@RequestMapping(value="/approve",method=RequestMethod.PUT)
+public ResponseEntity<?> approve(@RequestBody BlogPost blog,HttpSession session){
+	String email=(String)session.getAttribute("loginId");
+	if(email==null) {
+		ErrorClazz error=new ErrorClazz(5,"Unauthorized access...");
+		return new ResponseEntity<ErrorClazz>(error,HttpStatus.UNAUTHORIZED);
+	}
+	User user=userDao.getUser(email);
+	if(!user.getRole().equals("ADMIN")) {
+		ErrorClazz error=new ErrorClazz(7,"Access denied");
+		return new ResponseEntity<ErrorClazz>(error,HttpStatus.UNAUTHORIZED);
+	}
+	blogPostDao.approve(blog);
+	return new ResponseEntity<Void>(HttpStatus.OK);
+}
+@RequestMapping(value="/reject",method=RequestMethod.PUT)
+public ResponseEntity<?> reject(@RequestBody BlogPost blog,HttpSession session){
+	String email=(String)session.getAttribute("loginId");
+	if(email==null) {
+		ErrorClazz error=new ErrorClazz(5,"Unauthorized access...");
+		return new ResponseEntity<ErrorClazz>(error,HttpStatus.UNAUTHORIZED);
+	}
+	User user=userDao.getUser(email);
+	if(!user.getRole().equals("ADMIN")) {
+		ErrorClazz error=new ErrorClazz(7,"Access denied");
+		return new ResponseEntity<ErrorClazz>(error,HttpStatus.UNAUTHORIZED);
+	}
+	blogPostDao.reject(blog,rejectionReason);
+	return new ResponseEntity<Void>(HttpStatus.OK);
 }
 }
