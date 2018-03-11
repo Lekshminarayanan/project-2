@@ -17,11 +17,24 @@ blogService.getBlogApproved=function(){
 blogService.getBlog=function(id){
 	return $http.get("http://localhost:8081/projmiddleware/getblog"+id)
 }
+blogService.hasUserLikedBlog=function(id){
+	return $http.get("http://localhost:8081/projmiddleware/hasuserlikedblog",blog)
+}
+
 blogService.approve=function(blog){
 	return $http.put("http://localhost:8081/projmiddleware/approve",blog)
 }
-blogService.reject=function(blog){
+blogService.reject=function(blog,rejectionReason){
 	return $http.put("http://localhost:8081/projmiddleware/reject/"+rejectionReason ,blog)
+}
+blogService.updateLikes=function(id){
+	return $http.get("http://localhost:8081/projmiddleware/updatelikes"+id);
+}
+blogService.addComment=function(blogComment){
+	return $http.get("http://localhost:8081/projmiddleware/addcomment",blogComment)
+}
+blogService.getBlogComments=function(id){
+	return $http.get("http://localhost:8081/projmiddleware/blogcomments"+id)
 }
 return blogService;
 

@@ -138,7 +138,7 @@
 
     
   <!-- https://mvnrepository.com/artifact/oracle/ojdbc6 -->
-<dependency>
+   <dependency>
     <groupId>com.oracle</groupId>
     <artifactId>ojdbc6</artifactId>
     <version>11.2.0</version>

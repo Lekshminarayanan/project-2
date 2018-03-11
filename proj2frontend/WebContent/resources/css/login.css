@@ -27,7 +27,11 @@
 	border: 1px solid #000;
 	
 }	
+	.liked{
+	color:blue;
+	}
 	
-	
-	
+	.default{
+	color:black;
+	}
 	
