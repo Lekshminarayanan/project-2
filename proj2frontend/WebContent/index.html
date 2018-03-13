@@ -38,7 +38,7 @@
 				<div class="collapse navbar-collapse" id="collapse-example">
 					<ul class="nav navbar-nav">
 						<li><a href="#/register"
-							ng-show="loggedInUser.firstname!=undefined">Sign Up</a></li>
+							ng-show="loggedInUser.firstname==undefined">Sign Up</a></li>
 						<li><a href="#/login"
 							ng-show="loggedInUser.firstname==undefined">Sign In</a></li>
 						<li><a href="#/edituserprofile"
@@ -46,7 +46,7 @@
 
 						<li class="dropdown"><a href="" class="dropdown-toggle"
 							data-toggle="dropdown"
-							ng-show="loggedInUser.firstname!=undefined">Job<b
+							ng-show="loggedInUser.firstname==undefined">Job<b
 								class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="#/addjob" ng-show="loggedInUser.role=='ADMIN'">Add
@@ -56,7 +56,7 @@
 
 						<li class="dropdown"><a href="" class="dropdown-toggle"
 							data-toggle="dropdown"
-							ng-show="loggedInUser.firstname!=undefined">Blog<b
+							ng-show="loggedInUser.firstname!==undefined">Blog<b
 								class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="#/addblog">Add Blog</a></li>
@@ -65,6 +65,9 @@
 										approval</a></li>
 								<li><a href="#/blogsapproved">Blogs</a></li>
 							</ul></li>
+							
+							<li>	<a href="#/uploadprofilepic">
+						<img src="http://localhost:8081/proj2middleware/getimage/{{loggedInUser.email}}" alt="Upload Profilepic"></a></li>
 
 						<li class="dropdown">< <a href="" class="dropdown-toggle"
 							data-toggle="dropdown" ng-show="loggedInUser.firstname"> <span
@@ -73,15 +76,17 @@
 							<ul class="dropdown-menu">
 								<span class="dropdown-content">
 									<li ng-repeat="notification in notifications"><a
-										href="/getnotification/{{notification.id}}">Blog titled <b>{{notification.blogTitle}}</b>approval
+										href="#/getnotification/{{notification.id}}">Blog titled <b>{{notification.blogTitle}}</b>approval
 											status is updated
 									</a>
 										<hr></li>
 								</span>
-							</ul> Hi{{loggedInUser.firstname}}&nbsp;{{loggedInUser.lastname}}</a></li>
+							</ul>
+							</li>
+							 <li><a href="#" ng-show="loggedInUser.firstname!=undefined">Hi{{loggedInUser.firstname}}&nbsp;{{loggedInUser.lastname}}</a></li>
 
 						<li><a href="" ng-click="logout()"
-							ng-show="loggedInUser.firstname!=undefined">logout</a></li>
+							ng-show="loggedInUser.firstname!==undefined">logout</a></li>
 
 					</ul>
 

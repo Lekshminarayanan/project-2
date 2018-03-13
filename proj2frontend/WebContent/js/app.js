@@ -1,5 +1,5 @@
 /**
- * Angular JS module and config SPA
+ * Angular JS module and configuration SPA
  */
 var app=angular.module('app',['ngRoute','ngCookies'])
 app.config(function($routeProvider){
@@ -56,6 +56,10 @@ app.config(function($routeProvider){
 	when('/home',{
 		templateUrl:'views/home.html',
 			controller:'NotificationCtrl'
+	})
+	when('/uploadprofilepic',{
+		templateUrl:'views/uploadprofilepic.html',
+			
 	})
 	.otherwise({
 		templateUrl:'views/home.html',

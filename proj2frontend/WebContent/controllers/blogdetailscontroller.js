@@ -85,5 +85,9 @@ BlogService.getBlog(id).then(
 			$location.path('/login')
 		})
 	}
+		$scope.onShowComments=function(){
+			$scope.showComments=!$scope.showComments;
+		
+	}
 	getBlogComments(id)
 })
