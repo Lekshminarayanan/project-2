@@ -34,8 +34,9 @@ public ResponseEntity<?> uploadProfilePicture(@RequestParam CommonsMultipartFile
 	profilePictureDao.uploadProfilePicture(profilePicture);
 	return new ResponseEntity<ProfilePicture>(profilePicture,HttpStatus.OK);
 }
-@RequestMapping(value="/getimage/{email}",method=RequestMethod.GET)
+@RequestMapping(value="/getimage/{email:.+}",method=RequestMethod.GET)
 public @ResponseBody byte[] getImage(@PathVariable String email,HttpSession session) {
+System.out.println(email);
 	String auth=(String)session.getAttribute("loginId");
 	if(auth==null) {
 		return null;	

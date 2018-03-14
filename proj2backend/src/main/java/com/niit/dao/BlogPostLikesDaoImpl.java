@@ -24,3 +24,4 @@ public BlogPostLikes hasUserLikedBlog(int blogId, String email) {
 	return blogPostLikes;
 }
 }
+

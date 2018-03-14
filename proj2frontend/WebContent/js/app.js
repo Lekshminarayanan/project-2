@@ -40,24 +40,24 @@ app.config(function($routeProvider){
 		templateUrl:'views/blogsapproved.html',
 			controller:'BlogCtrl'
 	})
-	when('/getblog/:id',{
+	.when('/getblog/:id',{
 		templateUrl:'views/blogdetails.html',
 			controller:'BlogDetailsCtrl'
 	})
-	when('/getblognotapproved/:id',{
+	.when('/getblognotapproved/:id',{
 		templateUrl:'views/blogapprovalform.html',
 			controller:'BlogDetailsCtrl'
 	})
-	when('/getnotification/:id',{
+	.when('/getnotification/:id',{
 		templateUrl:'views/notificationdetails.html',
 			controller:'NotificationCtrl'
 	})
 
-	when('/home',{
+	.when('/home',{
 		templateUrl:'views/home.html',
 			controller:'NotificationCtrl'
 	})
-	when('/uploadprofilepic',{
+	.when('/uploadprofilepic',{
 		templateUrl:'views/uploadprofilepic.html',
 			
 	})

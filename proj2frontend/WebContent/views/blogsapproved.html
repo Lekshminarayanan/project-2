@@ -2,13 +2,22 @@
 	<div class="row" style="width: 600px">
 		<div ng-repeat="blog in blogsApproved">
 			<div class="panel panel-info">
-				<div class="panel-heading">
-					<a href="#/getblog/{{blog.id}}">{{blog.blogTitle}}</a>
+				<div class="panel-heading">Blog Posts</div>
+				<div class="panel-body">
+					<div ng-repeat="blog in blogsApproved">
+						<b><a href="#/getblog/{{blog.id}}">{{blog.blogTitle}}</a></b><br>
+						<b>Posted On:</b>{{blog PostedOn | date:'medium'}}<br> <b>Posted
+							By:</b>{{blog.postedBy.firstname}}&nbsp;{{blog.postedBy.lastname}}<br>
+						<img
+							src="http://localhost:8081/proj2middleware/getimage/{{blog.postedBy.email}}"
+							alt="" height="40px" width="40px">
+						<hr>
+					</div>
 				</div>
-				<div class="panel-body"></div>
-				<b>Posted On:</b>{{blog PostedOn | date:'medium'}}<br>
-				<b>Posted By:</b>{{blog.postedBy.firstname}}&{{blog.postedBy.lastname}}
 			</div>
 		</div>
 	</div>
 </div>
+
+
+

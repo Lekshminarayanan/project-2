@@ -15,6 +15,7 @@ import com.niit.model.ErrorClazz;
 import com.niit.model.User;
 
 @Controller
+@CrossOrigin(value="http://localhost:8085")
 public class UserController {
 	@Autowired
 private UserDao userDao;
