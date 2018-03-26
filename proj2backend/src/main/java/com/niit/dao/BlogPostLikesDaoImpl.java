@@ -23,5 +23,9 @@ public BlogPostLikes hasUserLikedBlog(int blogId, String email) {
 	BlogPostLikes blogPostLikes=(BlogPostLikes)query.uniqueResult();
 	return blogPostLikes;
 }
+public BlogPostLikes updateLikes(int id, String email) {
+	// TODO Auto-generated method stub
+	return null;
+}
 }
 

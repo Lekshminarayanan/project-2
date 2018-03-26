@@ -12,4 +12,5 @@ BlogPost getBlog(int id);
 void reject(BlogPost blog,String rejectionReason);
 void approve(BlogPost blog);
 void addBlogComment (BlogComment blogComment);
+List<BlogComment> getAllBlogComments(int blogPostId);
 }

@@ -27,6 +27,7 @@ public List<BlogPost> ListOfBlogs(int approved){
 	Session session=sessionFactory.getCurrentSession();
 	Query query=session.createQuery("from BlogPost where approved="+approved);
 	List<BlogPost> blogs=query.list();
+	System.out.println("Size of list in Dao is ");
 	return blogs;
 }
 public BlogPost getBlog(int id) {
